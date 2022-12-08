@@ -1,4 +1,4 @@
-  -- require('lualine').setup()
+-- require('lualine').setup()
 
 -- Eviline config for lualine
 -- Author: shadmansaleh
@@ -41,8 +41,8 @@ local config = {
     -- Disable sections and component separators
     component_separators = '',
     section_separators = '',
-    globalstatus=true,
-      theme = {
+    globalstatus = true,
+    theme = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
@@ -73,7 +73,7 @@ local config = {
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
- table.insert(config.sections.lualine_c, component) 
+  table.insert(config.sections.lualine_c, component)
 end
 
 -- Inserts a component in lualine_x ot right section
@@ -92,7 +92,7 @@ ins_left {
 ins_left {
   -- mode component
   function()
-    return   ''
+    return ''
   end,
   color = function()
     -- auto change color according to neovims mode

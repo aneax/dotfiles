@@ -1,4 +1,3 @@
-
 -- Based on: https://github.com/alpha2phi/neovim-for-beginner/blob/42-winbar/lua/config/whichkey.lua
 
 local colors = require('plugin_setups.colors')
@@ -29,7 +28,6 @@ local function is_empty(s)
   return s == nil or s == ""
 end
 
-
 local function get_buf_option(opt)
   local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
   if not status_ok then
@@ -38,7 +36,6 @@ local function get_buf_option(opt)
     return buf_option
   end
 end
-
 
 local excludes = function()
   if vim.tbl_contains(M.winbar_filetype_exclude, vim.bo.filetype) then
@@ -70,17 +67,17 @@ function M.get_winbar()
   end
   if navic.is_available() then
     return "%#WinBarSeparator#"
-      .. "%="
-      .. ""
-      .. "%*"
-      .. get_modified()
-      .. get_location()
-      .. "%#WinBarSeparator#"
-      .. ""
-      .. "%*"
+        .. "%="
+        .. ""
+        .. "%*"
+        .. get_modified()
+        .. get_location()
+        .. "%#WinBarSeparator#"
+        .. ""
+        .. "%*"
   else
     return "%#WinBarSeparator#" .. "%=" .. "" .. "%*" .. get_modified() .. "%#WinBarSeparator#" .. "" .. "%*"
   end
 end
 
-return M 
+return M

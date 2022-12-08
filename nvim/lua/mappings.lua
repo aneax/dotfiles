@@ -24,8 +24,8 @@
 -- 	expr: boolean. If enables allows vimscript or lua to calculate value of {rhs}
 --
 local opts = {
-    noremap = true,
-    silent = true
+  noremap = true,
+  silent = true
 }
 
 local keymap = vim.keymap.set
@@ -36,13 +36,13 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- copy from clipboard
-keymap({'n', 'x'}, 'cp', '"+y"')
+keymap({ 'n', 'x' }, 'cp', '"+y"')
 
 -- paste from clipboard
-keymap({'n', 'x'}, 'cv', '"+p"')
+keymap({ 'n', 'x' }, 'cv', '"+p"')
 
 -- delete without changing the registers
-keymap({'n', 'x'}, 'x', '"_x"')
+keymap({ 'n', 'x' }, 'x', '"_x"')
 
 ---- Normal Mode ----
 -- select all text in current buffer
@@ -98,4 +98,3 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-

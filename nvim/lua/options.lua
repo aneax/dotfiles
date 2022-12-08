@@ -15,7 +15,7 @@ vo.mouse = 'a'
 -- ignore cases when searching
 vo.ignorecase = false
 
--- makes search ignore uppercase letters unless the search term has an uppercase letter. 
+-- makes search ignore uppercase letters unless the search term has an uppercase letter.
 vo.smartcase = true
 
 -- highlights the results of previous search
@@ -27,7 +27,7 @@ vo.wrap = true
 -- preserve indentation of virtual line (when wrap is enabled)
 vo.breakindent = true
 
--- tab space 
+-- tab space
 vo.tabstop = 2
 
 -- show tab line
@@ -53,13 +53,13 @@ vo.splitright = true
 
 -- characters to fill the statuslines and vertical separators
 vo.fillchars = {
-		horiz = "━",
-		horizup="┻",
-		horizdown="┳",
-		vert = "┃",
-		vertleft = "┫",
-		vertright = "┣",
-		verthoriz = "╋",
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
 }
 
 -- enable 24-bit RGB color in the TUI
@@ -79,16 +79,16 @@ vo.sidescrolloff = 8
 
 -- see difference between tabs, space, trailing blanks, ...
 -- Defaults:
--- 		tabs: '>' 
+-- 		tabs: '>'
 -- 		trailing spaces: '-'
 -- 		non-breakable space characters: '+'
 vo.list = true
 
 vo.listchars = {
-	tab = "»·",
-	extends = "↪",
-	precedes = "↩",
-	eol="↵"
+  tab = "»·",
+  extends = "↪",
+  precedes = "↩",
+  eol = "↵"
 }
 
 -- set background
@@ -115,7 +115,7 @@ vo.signcolumn = "yes"
 -- Remember 50 items in commandline history
 vo.history = 50
 
--- Folding setting 
+-- Folding setting
 vo.foldcolumn = "1"
 vo.foldlevel = 99
 vo.foldenable = true
