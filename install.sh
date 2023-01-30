@@ -49,3 +49,10 @@ echo "Configure neovim"
 NVIM="$CROOT/nvim"
 NOUT="$HOME/.config"
 checkIt "$NVIM" "$NOUT"
+
+
+echo "Configure gdb"
+GDBFILE="$CROOT/gdb/gdbinit"
+GDBOUT="$HOME/.gdbint"
+checkIt "$GDBFILE" "$GDBOUT"
+

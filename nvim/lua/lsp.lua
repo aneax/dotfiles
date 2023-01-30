@@ -17,6 +17,7 @@ vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -24,9 +25,9 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bskmp = vim.api.nvim_buf_set_keymap
 
-  bskmp(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  bskmp(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  bskmp(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  --bskmp(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  --bskmp(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  --bskmp(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   bskmp(bufnr, 'n', '<A-f>', '<cmd>lua vim.lsp.buf.format {async=true}<CR>', opts)
 
   -- for nvim-navic
@@ -36,7 +37,13 @@ local on_attach = function(client, bufnr)
   end
 
 
-  require("highlight").do_highlight(client)
+  require("lsp_configs.highlight").do_highlight(client)
+  --[[ require "lsp_signature".on_attach({
+    bind = true,
+    handler_opts = {
+      border = "rounded"
+    }
+  }, bufnr) ]]
 
   local keymap_g = {
     name = "Goto",
@@ -60,6 +67,9 @@ local on_attach = function(client, bufnr)
       f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
       n = { "<cmd>Lspsaga rename<CR>", "Rename" },
       t = { "<cmd>TroubleToggle<CR>", "Trouble" },
+      g = { "<cmd>Neogen func<cr>", "Function Documentation" },
+      c = { "<cmd>Neogen class<cr>", "Class Documentation" }
+
     },
     e = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Line Diagnostics" },
   }
@@ -79,7 +89,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  clangd = {}, sumneko_lua = {}, cmake = {}
+  clangd = {}, sumneko_lua = {}, cmake = {}, marksman = {}, pylsp = {}, rust_analyzer = {},
 }
 servers["sumneko_lua"] = {
   settings = {
@@ -105,6 +115,11 @@ servers["sumneko_lua"] = {
   },
 } --
 
+servers["clangd"] = {
+  cmd = { "completion-style=bundled", "function-arg-placeholders=true", "malloc-trim", "-j 8",
+    "background-index-priority=background" }
+}
+
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.foldingRange = {
@@ -120,7 +135,7 @@ for server, _ in pairs(servers) do
       -- This will be the default in neovim 0.7+
       debounce_text_changes = 150
     },
-    capabilitites = capabilities
+    capabilitites = capabilities,
   }
 end
 
@@ -141,6 +156,7 @@ local lsp = {
       border = "rounded",
     },
   },
+  bind = true,
 }
 
 -- Diagnostic signs
