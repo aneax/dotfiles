@@ -1,13 +1,10 @@
 local vo = vim.opt
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- show line numbers
 vo.number = true
 
 -- enable relative numbering
-vo.relativenumber = true
+vim.opt.relativenumber = true
 
 -- enable mouse for every modes
 vo.mouse = 'a'
@@ -115,8 +112,10 @@ vo.signcolumn = "yes"
 -- Remember 50 items in commandline history
 vo.history = 50
 
--- Folding setting
+-- Folding settings
 vo.foldcolumn = "1"
 vo.foldlevel = 99
 vo.foldenable = true
 vo.foldlevelstart = 99
+
+vo.scrolloff = 8

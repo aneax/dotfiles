@@ -60,6 +60,7 @@ keymap('n', "<C-Right>", ":vertical resize +2<CR>", opts)
 -- navigate buffers
 keymap("n", "<S-Right>", ":bnext<cr>", opts)
 keymap("n", "<S-Left>", ":bprevious<cr>", opts)
+keymap("n", "<C-x>", ":bd<cr>", opts)
 
 -- better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
